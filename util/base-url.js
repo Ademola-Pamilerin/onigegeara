@@ -1,0 +1,2 @@
+export const request_url = process.env.NODE_ENV === "production" ? "https://api.onigegearaschools.com.ng/api" : "http://localhost:4000/api"
+export const image_url = process.env.NODE_ENV === "production" ? "https://api.onigegearaschools.com.ng" : "http://localhost:4000"
