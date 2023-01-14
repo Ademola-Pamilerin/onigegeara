@@ -6,7 +6,7 @@ const HeadComponent = (props) => {
             <meta
                 name="description"
                 content={props.content} />
-            <meta name="keywords" content={`OGAC, Onigege Ara Schools, ${props.keywords}`} />
+            <meta name="keywords" content={`OGAC, Onigege Ara Schools, onigege , ${props.keywords}`} />
         </Head>
     )
 }

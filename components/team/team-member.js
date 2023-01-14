@@ -1,7 +1,8 @@
 import { Avatar, Box, Button, Stack, Typography } from "@mui/material"
 import Image from "next/image"
 import { colors } from "../../util/them"
-import CardEvent from "../event/card-event"
+import BackgroundImage from '../../static/ogac-1.png'
+
 
 const TeamMember = ({ name, role, src, alt }) => {
     return <Stack sx={{
@@ -45,46 +46,63 @@ const TeamMember = ({ name, role, src, alt }) => {
             <Image layout="fill" src={src} alt={alt} />
         </Box>
         <Box sx={{
-            width: "100%",
-            height: "30%",
-            // backgroundColor: colors.admin_background,
+            overflow: "hidden",
             position: "relative",
-            display: {
-                xs: "flex",
-                sm: "flex",
-                md: "flex",
-                lg: "flex"
-            },
-            flexFlow: "column",
-            backgroundImage: "url(../../static/ogac-1.png)",
-            justifyContent: "center"
+            height: "30%",
+            width: "100%"
         }}>
-            <Typography sx={{
-                width: "100%",
-                fontSize: {
-                    xs: ".8rem",
-                    sm: "1rem",
-                    md: "1.2rem",
-                    lg: "1.2rem"
-                },
-                textAlign: "center"
+            <Stack sx={{
+                position: "absolute",
+                height: "10vh",
+                zIndex: 10
             }}>
-                Name: {name}
-            </Typography>
-            <Typography sx={{
+                <Box sx={{
+                    position: "relative",
+                    height: "10vh"
+                }}>
+                    <Image src={BackgroundImage} alt={"background image"} objectFit={"cover"} objectPosition={"center"} />
+                </Box>
+            </Stack>
+            <Stack sx={{
+                position: "relative",
+                zIndex: 30,
                 width: "100%",
-                textAlign: "center",
-                fontSize: {
-                    xs: ".8rem",
-                    sm: "1rem",
-                    md: "1.2rem",
-                    lg: "1.2rem"
+                height: "100%",
+                display: {
+                    xs: "flex",
+                    sm: "flex",
+                    md: "flex",
+                    lg: "flex"
                 },
-                display: "block"
+                flexFlow: "column",
+                justifyContent: "center",
             }}>
-                Role: {role}
-            </Typography>
-
+                <Typography sx={{
+                    width: "100%",
+                    fontSize: {
+                        xs: ".8rem",
+                        sm: "1rem",
+                        md: "1.2rem",
+                        lg: "1.2rem"
+                    },
+                    textAlign: "center"
+                }}>
+                    Name: {name}
+                </Typography>
+                <Typography sx={{
+                    width: "100%",
+                    textAlign: "center",
+                    fontSize: {
+                        xs: ".8rem",
+                        sm: "1rem",
+                        md: "1.2rem",
+                        lg: "1.2rem"
+                    },
+                    display: "block"
+                }}>
+                    Role: {role}
+                </Typography>
+            </Stack>
         </Box>
         {/* <Box className="no-display" sx={{
             display: {

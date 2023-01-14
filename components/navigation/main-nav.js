@@ -17,11 +17,15 @@ const MainNav = (props) => {
 
     const isBig = useMediaQuery(`(min-width:1250px)`)
     const handleScroll = useCallback(() => {
+        console.log(window.pageYOffset)
         let currentPage = window.pageYOffset;
         if (scroll > currentPage) {
             setshow(true);
         } else {
             setshow(false);
+        }
+        if (window.pageYOffset < 2) {
+            setshow(false)
         }
         setScroll(currentPage);
     }, [scroll]);
@@ -37,7 +41,9 @@ const MainNav = (props) => {
     return (
         <>
             <Navigation type={props.type} />
-            {show && <div>
+            {show && <div style={{
+                padding: 0
+            }}>
                 <AppBar
                     position={"fixed"}
                     sx={{
@@ -46,13 +52,41 @@ const MainNav = (props) => {
                         backgroundPosition: "center center",
                         width: "100%",
                         overflow: "hidden",
-                        margin: 0
+                        margin: 0,
                     }}
                 >
                     <Toolbar sx={{
-                        backgroundImage: "url(../../static/ogac-1.png)",
-                        width: "99%"
+                        width: "100%",
+                        height: "8vh"
                     }}>
+                        <Stack sx={{
+                            width: "100%",
+                            height: "9vh",
+                            position: "absolute",
+                            left: "0",
+                            zIndex: -1,
+                            overflow: "hidden",
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}>
+                            <Box sx={{
+                                position: "relative",
+                                width: "100%",
+                                height: "9vh"
+                            }}>
+                                <Image
+                                    src={require("../../static/ogac-1.png")}
+                                    alt="Oni-gege Ara group of schools official logo"
+                                    layout='fill'
+                                    className={classes.image}
+                                    objectFit="cover"
+                                // style={{
+                                //     mixBlendMode: "multiply"
+                                // }}
+                                />
+                            </Box>
+                        </Stack>
+
                         <Stack sx={{
                             width: {
                                 xs: "180%",
@@ -115,7 +149,7 @@ const MainNav = (props) => {
                         }} className={classes.nav}>
                             <Link href={"/#top"} ><a>Home</a></Link>
                             <Link href={"/about"} ><a>About</a></Link>
-                            <Link href={"/#contact"} ><a>Contact</a></Link>
+                            <Link href={"/contact"} ><a>Contact</a></Link>
                             <Link href={"/post/all"} ><a>Events</a></Link>
                             {isBig && <> <Link href={"/student"} ><a>Students</a></Link>
                                 <Link href={"/teacher"} ><a>Staff</a></Link>
@@ -141,6 +175,7 @@ const MainNav = (props) => {
                                     width: "100%",
                                     color: colors.side_blue_brown
                                 }} />
+
                         </Stack>
                     </Toolbar>
                 </AppBar>
@@ -198,10 +233,10 @@ const MainNav = (props) => {
                                 <Link href={"/about"} ><a>About</a></Link>
                             </li>
                             <li className={classes.list_val}>
-                                <Link href={"/#contact"} ><a>Contact</a></Link>
+                                <Link href={"/contact"} ><a>Contact</a></Link>
                             </li>
                             <li className={classes.list_val}>
-                                <Link href={"/post/all"} ><a>Contact</a></Link>
+                                <Link href={"/post/all"} ><a>Events</a></Link>
                             </li>
                             {isBig
                                 &&

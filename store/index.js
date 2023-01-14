@@ -5,6 +5,7 @@ import { exam_reducer } from './exam-slice'
 import { post_reducer } from './post-slice'
 import { question_reducer } from './question'
 import { studentReducers } from './student-slice'
+import { subscription_reducer } from './subscription'
 import { TeacherReducer } from './teacher-slice'
 
 
@@ -16,7 +17,8 @@ const store = configureStore({
         question: question_reducer,
         teacher: TeacherReducer,
         admin: AdminReducer,
-        post: post_reducer
+        post: post_reducer,
+        subscribe:subscription_reducer
     }
 })
 export default store

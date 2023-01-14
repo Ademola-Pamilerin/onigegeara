@@ -64,17 +64,25 @@ html {
 }
 
 .list_style {
-  width: "80%";
+  width: 80%;
   list-style: none;
-  width: "100%";
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
 
 .list_style li {
-  width: "100%";
+  width: 100%;
   font-size: 1rem;
   font-weight: 300;
+}
+
+.text_area {
+  width: 90%;
+  font-family: none;
+  font: inherit;
+  border-color: #b5bbc1;
+  padding: .5rem .7rem
 }
 
 @media (max-height:500px) {

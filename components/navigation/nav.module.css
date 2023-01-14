@@ -10,11 +10,9 @@
     margin: 0px 1rem;
 }
 
-.nav {}
-
 .nav a {
     color: rgba(165, 125, 24, 1) !important;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 
@@ -31,16 +29,20 @@
 }
 
 
+
 @media (max-width:600px) {
     .image_container {
         width: 20% !important;
     }
+
 }
 
 @media (min-width:800px) {
     .nav a {
-        font-size: .8rem;
+        font-size: 1.5rem;
     }
+
+
 }
 
 @media (min-width:1024px) {

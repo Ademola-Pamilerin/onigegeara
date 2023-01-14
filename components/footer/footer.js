@@ -55,7 +55,9 @@ const Footer = () => {
                         lg: "1.5rem"
                     },
                     fontWeight: 500,
-                    color: colors.backgroun_color
+                    color: colors.backgroun_color,
+                    textAlign: "center",
+                    width: "100%"
                 }}>
                     Onigege Ara Street, Ishara, Remo North, Ogun State, Nigeria
                 </Typography>
