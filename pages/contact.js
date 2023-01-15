@@ -13,7 +13,9 @@ const Contact = (props) => {
                 title={"Onigege Ara Contact Page"}
                 content={"This is  the contact page of onigege Ara school, Reach out to ONAG here"} />
 
-            <Stack>
+            <Stack sx={{
+                margin: "0px 0px 3rem 0px"
+            }}>
                 <MainNav />
             </Stack>
             <Box sx={{

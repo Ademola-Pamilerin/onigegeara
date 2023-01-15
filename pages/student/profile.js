@@ -59,7 +59,9 @@ const WelcomeStudentPage = (props) => {
     return (
         <Stack sx={{ height: "100vh", width: "100%" }}>
             <HeadComponent title={'OGAC-STUDENT'} content={'This is the OGAC official Student Profile Page'} />
-            <Stack>
+            <Stack sx={{
+                margin: "0px 0px 3rem 0px"
+            }}>
                 <MainNav />
             </Stack>
             <SnackBarComponent

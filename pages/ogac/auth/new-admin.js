@@ -16,10 +16,15 @@ const Teacher_Auth = (props) => {
         width: "100%"
     }}>
         <HeadComponent
-            content={"This is the official Onigege Ara Adminstration login page"}
+            content={"This is the official Onigege Ara Adminstration Sign up page"}
             title={"OGAC Administratin Authorization"}
         />
-        <MainNav />
+        <Stack sx={{
+            margin: "0px 0px 3rem 0px",
+            width: "100%"
+        }}>
+            <MainNav />
+        </Stack>
         <Stack sx={{
             width: "80%",
             justifyContent: "center",

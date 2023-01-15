@@ -100,7 +100,13 @@ const StudentExam = (props) => {
 
                                     width: "100%",
                                 }}>
-                                    <MainNav />
+                                    <Stack sx={{
+                                        margin: "0px 0px 3rem 0px",
+                                        width: "100%"
+                                    }}>
+                                        <MainNav />
+                                    </Stack>
+
                                     <Stack sx={{
                                         justifyContent: "center",
                                         alignItems: "center",

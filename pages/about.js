@@ -18,9 +18,11 @@ const AboutPage = () => {
             title={"About OGAC"}
             content={"Read more about OGAC here, know about our History and Learn more about the school"}
         />
-        <Stack>
+        <Stack sx={{
+            margin:"0px 0px 3rem 0px"
+        }}>
             <MainNav />
-        </Stack>
+        </Stack >
         <Stack sx={{
             width: '100%',
             justifyContent: "center",

@@ -70,7 +70,9 @@ const NewPost = ({ error, post }) => {
                 title={"Update Post"}
                 content={"Create A new Post, available for admin only"}
             />
-            <Stack>
+            <Stack sx={{
+                margin: "0px 0px 3rem 0px"
+            }}>
                 <MainNav type={"Admin"} />
             </Stack>
             {check_loading ? <Stack sx={{ height: "100vh", justifyContent: "center", alignItems: "center", width: "100%" }}>

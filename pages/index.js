@@ -33,7 +33,7 @@ const Home = (props) => {
         keywords={"ONAG Home Page, Ogun State, School"}
       />
       <Stack sx={{
-        height: "10%"
+        height: "10%",
       }}>
         <MainNav />
       </Stack>

@@ -7,6 +7,7 @@ import { useState } from "react"
 import HeadComponent from '../../components/header/head'
 import MainNav from "../../components/navigation/main-nav"
 import { colors } from '../../util/them'
+import Image from "next/image"
 
 const Teacher_Auth = (props) => {
 
@@ -25,7 +26,12 @@ const Teacher_Auth = (props) => {
             content={"This is the official Onigege Ara teachers login page"}
             title={"OGAC Teacher login"}
         />
-        <MainNav />
+        <Stack sx={{
+            margin: "0px 0px 3rem 0px",
+            width: "100%"
+        }}>
+            <MainNav />
+        </Stack>
         <Stack sx={{
             width: "80%",
             justifyContent: "center",
@@ -64,15 +70,41 @@ const Teacher_Auth = (props) => {
             justifyContent: "center",
             alignItems: "center",
             flex: 1,
-            backgroundImage: "url(../../static/ogac-1.png)",
-            backgroundSize: " cover",
-            backgroundPosition: "top left",
             padding: "2rem 0",
-            margin: "1rem 0"
+            margin: "1rem 0",
+            position: "relative"
         }}>
-            {
-                mode ? <SignIn clicked={clicked} /> : <SignUp clicked={clicked} />
-            }
+            <Stack sx={{
+                width: "100%",
+                position: "absolute",
+                zIndex: -1
+            }}>
+                <Box sx={{
+                    height: "80vh",
+                    position: "relatuve",
+                    width: "100%"
+                }}>
+                    <Image
+                        src={require("../../static/ogac-1.png")}
+                        alt={"Background image of Authetication Page"}
+                        layout={"fill"}
+                        objectFit="cover"
+                        objectPosition={"center center"} />
+                </Box>
+            </Stack>
+            <Stack sx={{
+                position: "relative",
+                height: "auto",
+                zIndex: 10,
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                {
+                    mode ? <SignIn clicked={clicked} /> : <SignUp clicked={clicked} />
+                }
+
+            </Stack>
         </Stack>
     </Stack>
     )

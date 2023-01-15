@@ -81,7 +81,10 @@ const AllPost = () => {
             title={"Oni-gege Posts"}
             content={"View all post by Onigege Ara Group of schools"}
         />
-        <Stack>
+        <Stack sx={{
+            margin: "0px 0px 3rem 0px",
+            width: "100%"
+        }}>
             <MainNav type="Admin" />
         </Stack>
 

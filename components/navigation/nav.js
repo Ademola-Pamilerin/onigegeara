@@ -8,8 +8,6 @@ import { useCallback, useEffect, useState, Fragment, useRef } from 'react'
 import { useRouter } from 'next/router'
 
 const Navigation = (props) => {
-    const [show, setshow] = useState(true);
-    const [scroll, setScroll] = useState(0);
     const [open, setOpen] = useState(false)
 
     const router = useRouter()
@@ -59,9 +57,6 @@ const Navigation = (props) => {
                                     layout='fill'
                                     className={classes.image}
                                     objectFit="cover"
-                                // style={{
-                                //     mixBlendMode: "multiply"
-                                // }}
                                 />
                             </Box>
                         </Stack>
@@ -111,9 +106,9 @@ const Navigation = (props) => {
                             display: "flex",
                             width: {
                                 xs: "80%",
-                                sm: "120%",
-                                md: "120%",
-                                lg: "120%"
+                                sm: "100%",
+                                md: "100%",
+                                lg: "100%"
                             },
                             display: {
                                 xs: "none",

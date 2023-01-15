@@ -10,6 +10,7 @@ import { checkStatus, sendStudentLoginRequest, authActions } from '../../store/a
 import { useRouter } from "next/router"
 import { request_url } from "../../util/base-url"
 import HeadComponent from "../../components/header/head"
+import Image from "next/image"
 
 const StudentLogin = () => {
 
@@ -143,8 +144,35 @@ const StudentLogin = () => {
                 }
             }}>
                 <HeadComponent title={'ONAG Student Portal'} content={'This is the ONAG officail Student Portal Page'} />
-                <MainNav />
+                <Stack sx={{
+                    margin: "0px 0px 3rem 0px",
+                    width: "100%"
+                }}>
+                    <MainNav />
+                </Stack>
             </Stack>
+            <SnackBarComponent
+                anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right"
+                }}
+                close={handleClose}
+                open={open && (Totalerror !== null || "")}
+                type={"error"}
+                duration={6000}
+                message={Totalerror}
+            />
+            <SnackBarComponent
+                anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right"
+                }}
+                close={() => setLoad(false)}
+                open={load}
+                type={"success"}
+                duration={100000}
+                message={"Logging in"}
+            />
             <Stack sx={{
                 width: "100%",
                 height: {
@@ -156,33 +184,34 @@ const StudentLogin = () => {
                 flexFlow: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundImage: "url(../../static/ogac-7.png)",
-                backgroundSize: "cover",
-                backgroundPosition: "top left"
+                position: "relative"
             }}>
-                <SnackBarComponent
-                    anchorOrigin={{
-                        vertical: "top",
-                        horizontal: "right"
-                    }}
-                    close={handleClose}
-                    open={open && (Totalerror !== null || "")}
-                    type={"error"}
-                    duration={6000}
-                    message={Totalerror}
-                />
-                <SnackBarComponent
-                    anchorOrigin={{
-                        vertical: "top",
-                        horizontal: "right"
-                    }}
-                    close={() => setLoad(false)}
-                    open={load}
-                    type={"success"}
-                    duration={100000}
-                    message={"Logging in"}
-                />
+                <Stack sx={{
+                    width: "100%",
+                    height: {
+                        xs: "calc(100vh - 10%)",
+                        sm: "100%",
+                        md: "calc(100vh - 5%)"
+                    },
+                    position: "absolute",
+                    zIndex: -1
+                }}>
+                    <Box sx={{
+                        width: "100%",
+                        height: {
+                            xs: "calc(100vh - 10%)",
+                            sm: "100%",
+                            md: "calc(100vh - 5%)"
+                        },
+                        position: "relative"
+                    }}>
+                        <Image src={require("../../static/ogac-7.png")} alt={"Student Login Background Image"} layout={"fill"} objectFit={"cover"} objectPosition={"center"} />
+                    </Box>
+                </Stack>
+
                 <Paper sx={{
+                    position: "relative",
+                    zIndex: 10,
                     backgroundColor: {
                         xs: "black",
                         lg: "rgba(230, 196, 166, 0.5)"

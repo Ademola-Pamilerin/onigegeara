@@ -12,8 +12,10 @@ const SinglePage = ({ post, similarPost, error }) => {
     const dispatch = useDispatch()
     const { all_posts, all_error, all_loading } = useSelector(state => state.post)
     const [totalError, setTotalError] = useState("")
+    const [loading, setLoading] = useState(true)
     const [showErr, setShowErr] = useState(false)
-    const sharedPost = all_posts.filter(el => el._id.toString() === post_id.toString())
+    // const sharedPost = all_posts ? all_posts.filter(el => el._id.toString() === post_id.toString()) : []
+
 
     useEffect(() => {
         dispatch(searchPost({ page: 1, title: "" }))
@@ -29,12 +31,26 @@ const SinglePage = ({ post, similarPost, error }) => {
         }
     }, [error])
 
+    useEffect(() => {
+        if (post || similarPost || error) {
+            setLoading(false)
+        }
+    }, [post, similarPost, error])
+
     return <>
         <HeadComponent title={post ? post.title : "loading"} content={post ? post.title : "Loading Post"} />
-        <Stack>
+        <Stack sx={{
+            margin: "0px 0px 3rem 0px"
+        }}>
             <MainNav />
         </Stack>
-        {error && totalError && <Stack sx={{
+        {loading && <Stack sx={{
+            width: "100%",
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center"
+        }}><CircularProgress variant="indeterminate" /></Stack>}
+        {!loading && error && showErr && <Stack sx={{
             justifyContent: "center",
             width: "100%",
             textAlign: "center",
@@ -44,7 +60,7 @@ const SinglePage = ({ post, similarPost, error }) => {
         }}><Typography sx={{
             width: "70%", textAlign: "center"
         }}>{totalError}</Typography></Stack>}
-        {!error && !totalError && <Stack sx={{
+        {!loading && !error && !totalError && <Stack sx={{
             width: "100%",
             justifyContent: "center",
             alignItems: "center"
@@ -89,6 +105,13 @@ const SinglePage = ({ post, similarPost, error }) => {
                     <Stack sx={{ justifyContent: "center", alignItems: "center" }}><CircularProgress variant="indeterminate" /></Stack> :
                     similarPost.length < 1 ? <Stack sx={{ justifyContent: "center", alignItems: "center" }}><CircularProgress variant="indeterminate" /></Stack> :
                         <Stack sx={{ width: "100%", justifyContent: "space-evenly", alignItems: "center" }}>
+                            <Typography sx={{
+                                width: "100%",
+                                textAlign: "center",
+                                margin: "1rem 0px",
+                                fontWeight: 700,
+                                fonSize: "2rem"
+                            }}>Similar Posts</Typography>
                             {similarPost.map(el => (
                                 <PostCard key={el._id} _id={el._id} title={el.title} image={el.image[0].path} />
                             ))}

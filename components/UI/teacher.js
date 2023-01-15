@@ -1,6 +1,7 @@
-import { Button, ButtonGroup, Stack } from '@mui/material'
+import { Box, Button, ButtonGroup, Stack } from '@mui/material'
 import { colors } from '../../util/them'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 
 const Teacher = (props) => {
@@ -26,20 +27,40 @@ const Teacher = (props) => {
                 flex: 3,
                 width: "100%",
                 height: "auto",
-                backgroundImage: "url(../../static/ogac-1.png)",
-                backgroundPosition: "100% 100%",
-                backgroundSize: "cover",
                 justifyContent: "center",
                 alignItems: "center",
                 overflowY: "auto",
+                position: "relative"
             }}>
+                <Stack sx={{
+                    position: "absolute",
+                    zIndex: 1,
+                    width: "100%",
+                    height: "100vh"
+                }}>
+                    <Box sx={{
+                        position: "relative",
+                        height: "100vh",
+                        width: "100%"
+                    }}>
+                        <Image
+                            src={require("../../static/ogac-1.png")}
+                            layout={"fill"}
+                            objectFit={"cover"}
+                            objectPosition={"center center"}
+                            alt={"Teacher's Dashboard image"} />
+                    </Box>
+                </Stack>
+
                 <ButtonGroup sx={{
                     width: "80%",
                     flexFlow: "column",
                     justifyContent: "space-between",
                     // marginBottom: "1rem",
                     // padding: "20px 0px",
-                    height: "100%"
+                    height: "100%",
+                    position: "relative",
+                    zIndex: 30
                 }}>
                     <Button sx={{
                         backgroundColor: now === "home" ? "white" : colors.side_blue,
@@ -159,7 +180,9 @@ const Teacher = (props) => {
                 justifyContent: "center",
                 alignItems: "center",
                 overflowY: "auto",
-                overflowX: "hidden"
+                overflowX: "hidden",
+                position: "relative",
+                zIndex: 30
             }}>
                 {props.children}
             </Stack>

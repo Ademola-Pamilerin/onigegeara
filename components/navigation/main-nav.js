@@ -9,7 +9,7 @@ import Navigation from './nav'
 import { useRouter } from 'next/router'
 
 const MainNav = (props) => {
-    const [show, setshow] = useState(false);
+    const [show, setshow] = useState(true);
     const [scroll, setScroll] = useState(0);
     const [open, setOpen] = useState(false)
 
@@ -17,7 +17,7 @@ const MainNav = (props) => {
 
     const isBig = useMediaQuery(`(min-width:1250px)`)
     const handleScroll = useCallback(() => {
-        console.log(window.pageYOffset)
+
         let currentPage = window.pageYOffset;
         if (scroll > currentPage) {
             setshow(true);
@@ -25,7 +25,7 @@ const MainNav = (props) => {
             setshow(false);
         }
         if (window.pageYOffset < 2) {
-            setshow(false)
+            setshow(true)
         }
         setScroll(currentPage);
     }, [scroll]);
@@ -40,9 +40,13 @@ const MainNav = (props) => {
 
     return (
         <>
-            <Navigation type={props.type} />
+            {!show && <Navigation type={props.type} />}
             {show && <div style={{
-                padding: 0
+                padding: 0,
+                position: "relative",
+                height: "10vh",
+                width: "100%",
+                overflow: "hidden"
             }}>
                 <AppBar
                     position={"fixed"}
@@ -80,6 +84,7 @@ const MainNav = (props) => {
                                     layout='fill'
                                     className={classes.image}
                                     objectFit="cover"
+                                    priority
                                 // style={{
                                 //     mixBlendMode: "multiply"
                                 // }}
@@ -132,9 +137,9 @@ const MainNav = (props) => {
                             display: "flex",
                             width: {
                                 xs: "80%",
-                                sm: "120%",
-                                md: "120%",
-                                lg: "120%"
+                                sm: "100%",
+                                md: "100%",
+                                lg: "100%"
                             },
                             display: {
                                 xs: "none",

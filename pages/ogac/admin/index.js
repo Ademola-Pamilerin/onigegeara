@@ -19,7 +19,13 @@ const Teacher_Auth = (props) => {
             content={"This is the official Onigege Ara Adminstration login page"}
             title={"OGAC Administratin Authorization"}
         />
-        <MainNav />
+        <Stack sx={{
+            margin: "0px 0px 3rem 0px",
+            width: "100%"
+        }}>
+            <MainNav />
+        </Stack>
+
         <Stack sx={{
             width: "80%",
             justifyContent: "center",
@@ -60,7 +66,7 @@ const Teacher_Auth = (props) => {
                 padding: "2rem 0",
                 margin: "1rem 0"
             }}>
-                <AdminSignIn/>
+                <AdminSignIn />
             </Stack>
         </Stack>
     </Stack>

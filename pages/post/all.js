@@ -11,7 +11,6 @@ import { getAllPost } from '../../store/post-slice'
 
 const AllPost = () => {
     const dispatch = useDispatch()
-    const auth_state = useSelector(state => state.auth)
     const post_state = useSelector(state => state.post)
     const [page, setPage] = useState(1)
     const { all_error, all_loading, all_posts, pageNumber, totalNumber } = post_state
@@ -41,7 +40,9 @@ const AllPost = () => {
             title={"Oni-gege Posts"}
             content={"View all post by Onigege Ara Group of schools"}
         />
-        <Stack>
+        <Stack sx={{
+            margin: "0px 0px 3rem 0px"
+        }}>
             <MainNav />
         </Stack>
 
@@ -67,7 +68,7 @@ const AllPost = () => {
                     <Box sx={{
                         width: "100%"
                     }}>
-                        {!all_posts.length > 0 ?
+                        {all_posts && !all_posts.length > 0 ?
                             <Box sx={{ width: "100%", height: "70vh", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                                 No Post Yet
                             </Box>

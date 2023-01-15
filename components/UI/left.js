@@ -51,9 +51,6 @@ const ExaminationLeft = () => {
     }
 
     return <Stack sx={{
-        backgroundImage: "url(../../static/ogac-1.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "100% 100%",
         display: 'flex',
         flexFlow: "column",
         justifyContent: "space-between",
@@ -62,8 +59,21 @@ const ExaminationLeft = () => {
         textAlign: "center",
         height: "100vh",
         overflow: "none",
-        flex: 2.4
+        flex: 2.4,
+        position: "relative"
     }}>
+        <Stack sx={{
+            width: "100%",
+            position: "absolute",
+            zIndex: -1
+        }}>
+            <Box sx={{
+                position: "relative",
+                height: "100vh"
+            }}>
+                <Image layout="fill" src={require("../../static/ogac-1.png")} alt={"Background Image for Examination"} objectFit={"conver"} objectPosition={"center center"} />
+            </Box>
+        </Stack>
         <Box sx={{
             height: "10rem",
             width: "14rem",
@@ -71,14 +81,17 @@ const ExaminationLeft = () => {
             justifyContent: "center",
             alignItems: "center",
             flexFlow: "column",
-            flex: 9
+            flex: 9,
+            position: "relative",
+            zIndex: 20
         }}>
             <Box sx={{
                 height: "10rem",
                 width: "14rem",
-                position: "relative"
+                position: "relative",
+                backgroundColor:"silver"
             }}>
-                <Image style={{ mixBlendMode: "darken" }} alt={'Ademola'} src={require("../../static/ogac-logo.png")} layout={"fill"} objectPosition={"center"} objectFit={"cover"} />
+                <Image style={{ mixBlendMode: "darken" }} alt={'ONAG LOGO'} src={require("../../static/ogac-logo.png")} layout={"fill"} objectPosition={"center"} objectFit={"cover"} />
             </Box>
             <Typography sx={{
                 fontSize: "1.2rem",
@@ -110,7 +123,9 @@ const ExaminationLeft = () => {
         <Box sx={{
             width: "100%",
             height: "100%",
-            flex: 3
+            flex: 3,
+            position: "relative",
+            zIndex: 20
         }}>
             <Typography sx={{
                 fontWeight: 700,
@@ -141,7 +156,9 @@ const ExaminationLeft = () => {
                 marginY: "10px",
                 cursor: "pointer",
                 display: "flex",
-                alignItems: "center"
+                alignItems: "center",
+                position: "relative",
+                zIndex: 20
             }}>
             <Typography sx={{
                 width: "100%",
@@ -162,7 +179,9 @@ const ExaminationLeft = () => {
             width: "100%",
             height: "100%",
             flex: 1,
-            justifyContent: "center"
+            justifyContent: "center",
+            position: "relative",
+            zIndex: 20
         }}>
             <Typography sx={{
                 width: "100%",

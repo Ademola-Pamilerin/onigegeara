@@ -98,7 +98,12 @@ const Students = () => {
         <Stack>
             <HeadComponent title={"Admin Student"} content={"This is the page for Admin to Perform actions on student"} />
         </Stack>
-        <MainNav type={"Admin"} />
+        <Stack sx={{
+            margin: "0px 0px 3rem 0px",
+            width: "100%"
+        }}>
+            <MainNav type={"Admin"} />
+        </Stack>
         <Stack sx={{
             height: "auto",
             overflowY: 'scroll',

@@ -3,22 +3,43 @@ import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import { colors } from '../../util/them'
 import { fontWeight } from '@mui/system'
 import Link from 'next/link'
+import Image from 'next/image'
 const Footer = () => {
     return <Stack sx={{
         height: "auto",
-        backgroundImage: "url(../../static/ogac-logo.png)",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        width: "100%"
+        width: "100%",
+        position: "relative",
+        zIndex: 10
     }}>
+        <Stack sx={{
+            position: "relative",
+            height: "20vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden"
+        }}>
+            <Box sx={{
+                height: "25vh",
+                position: "absolute",
+                width: "60%",
+                zIndex: 10,
+            }}>
+                <Image layout='fill' src={require("../../static/ogac-logo.png")} alt={"footer background image"} objectFit={"cover"} objectPosition={"center center"} />
+            </Box>
+        </Stack>
         <Box sx={{
             backgroundColor: colors.side_blue,
             width: "100%",
             display: "flex",
             justifyContent: "center",
             flexFlow: "column",
-            opacity: 0.95
+            opacity: 0.95,
+            position: "absolute",
+            zIndex: 20
         }}>
             <Box sx={{
                 display: "flex",
@@ -94,7 +115,8 @@ const Footer = () => {
                     },
                     color: "white",
                     fontWeight: "300"
-                }}>&copy; OGAC {new Date().getFullYear()}</Typography>
+                }}>&copy; OGAC {new Date().getFullYear()}
+                </Typography>
             </Box>
         </Box>
 

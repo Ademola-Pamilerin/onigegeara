@@ -33,17 +33,13 @@ const TeacherDashboard = () => {
         }
     }, [isAuthenticated, router, check_loading, accType])
     return <>
-        {/* {red && <Stack sx={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            fontSize: "1.2rem",
-            textAlign: "center"
-        }}>Redirecting</Stack>} */}
         <HeadComponent
             content={"This is the official teacher's page"}
             title={"Teacher's Dashboard"} />
-        <Stack>
+        <Stack sx={{
+            margin: "0px 0px 2rem 0px",
+            width: "100%"
+        }}>
             <MainNav />
         </Stack>
         {check_loading ? <Stack sx={{

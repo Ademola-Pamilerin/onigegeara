@@ -114,7 +114,10 @@ const Admin = () => {
             duration={10000}
         />
         <HeadComponent title={"Admin Dashboard"} content={"Official Dashboard for Administration of Onigege Ara"} />
-        <Stack>
+        <Stack sx={{
+            margin: "0px 0px 3rem 0px",
+            width: "100%"
+        }}>
             <MainNav type="Admin" />
         </Stack>
         {

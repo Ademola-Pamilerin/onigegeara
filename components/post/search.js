@@ -32,7 +32,7 @@ const Search = (props) => {
                 placeholder={"Enter title to search for a any event here "}
                 onChange={onChange}
                 style={{
-                    width: "80%",
+                    width: "75%",
                     height: "3rem",
                     textAlign: "center",
                     fontSize: "1.1rem",
@@ -47,7 +47,10 @@ const Search = (props) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "15%",
+                width: {
+                    xs:"20%",
+                    sm:"20%"
+                },
                 cursor: "pointer"
             }}
                 onClick={enterClick}

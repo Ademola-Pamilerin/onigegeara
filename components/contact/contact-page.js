@@ -1,5 +1,7 @@
 import { Box, Button, Stack, TextField } from "@mui/material"
 import { useEffect, useRef, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { directMessage } from "../../store/subscription"
 import SnackBarComponent from "../UI/error"
 
 const ContactPage = props => {
@@ -9,7 +11,8 @@ const ContactPage = props => {
     const [error, setError] = useState(null)
     const [showError, setShowError] = useState(false)
     const [showMessage, setShowMessage] = useState(false)
-
+    const dispatch = useDispatch()
+    const { message_error, message_loading, message_reply: message } = useSelector(state => state.subscribe)
 
     const submitHandler = () => {
         const inputVal = nameRef.current.value;
@@ -19,8 +22,24 @@ const ContactPage = props => {
         if (!inputVal || !emailVal || !messageVal) {
             setShowError(true)
             setError("please fil out all fields in the form")
+        } else {
+            dispatch(directMessage({ name: inputVal, email: emailVal, message: messageVal }))
         }
     }
+
+    useEffect(() => {
+        if (message_error) {
+            setShowError(true)
+            setError(message_error)
+        }
+    }, [message_error])
+
+    useEffect(() => {
+        if (message) {
+            setShowMessage(true)
+        }
+    }, [message])
+
 
     return <>
         <SnackBarComponent
@@ -28,6 +47,13 @@ const ContactPage = props => {
             type={"error"}
             close={() => setShowError(false)}
             message={error}
+            duration={50000}
+        />
+        <SnackBarComponent
+            open={showMessage}
+            type={"success"}
+            close={() => setShowMessage(false)}
+            message={message}
             duration={50000}
         />
         <Box sx={{

@@ -24,6 +24,7 @@ import SnackBarComponent from "../UI/error"
 import { Logout } from "@mui/icons-material"
 import { logoutStudent } from "../../store/auth-slice"
 import { useRouter } from 'next/router'
+import Image from "next/image"
 
 
 const StudentComponent = (props) => {
@@ -98,6 +99,13 @@ const StudentComponent = (props) => {
                         <Button variant={"contained"} onClick={logOutHandler}>Log out</Button></>}
             </DialogActions>
         </Dialog>
+        <SnackBarComponent
+            close={handleClose}
+            open={open && (error !== null || "")}
+            type={"error"}
+            duration={6000}
+            message={error}
+        />
 
         <Box sx={{
             position: "fixed",
@@ -149,20 +157,26 @@ const StudentComponent = (props) => {
         <Stack sx={{
             width: "100%",
             height: "auto",
-            backgroundImage: "url(../../static/ogac-1.png)",
-            backgroundPosition: "100% 100%",
-            backgroundSize: "cover",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            position: "relative"
         }}>
-            <SnackBarComponent
-                close={handleClose}
-                open={open && (error !== null || "")}
-                type={"error"}
-                duration={6000}
-                message={error}
-            />
+            <Stack sx={{
+                position: "absolute",
+                width: "100%",
+                zIndex: -1
+            }}>
+                <Box sx={{
+                    width: "100%",
+                    height: "70vh",
+                    position: "relative"
+                }}>
+                    <Image src={require("../../static/ogac-1.png")} alt={"Student Dahboard image"} layout="fill" objectFit="cover" objectPosition={"center center"} />
+                </Box>
+            </Stack>
             <Paper sx={{
+                position: "relative",
+                zIndex: 10,
                 backgroundColor: colors.backgroun_color,
                 width: "50%",
                 display: "flex",

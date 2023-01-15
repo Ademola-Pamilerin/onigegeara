@@ -29,8 +29,11 @@ const PostCard = ({ from, title, image, _id, type, data, reload, original }) => 
                 md: "20rem"
             },
             height: "30rem",
-            overflow: "hidden"
-        }}>
+            overflow: "hidden",
+            cursor: "pointer"
+        }}
+            onClick={type === "Admin" ? () => router.push("/post/update/" + _id) : clicked}
+        >
             <Box sx={{
                 width: "100%",
                 height: "25rem",
