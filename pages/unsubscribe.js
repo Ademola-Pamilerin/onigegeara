@@ -24,6 +24,7 @@ const Unsubscribe = () => {
             setShowError(true)
             setError("please enter your email")
         }
+        
         else {
             dispatch(unsubscribe({ email }))
         }
