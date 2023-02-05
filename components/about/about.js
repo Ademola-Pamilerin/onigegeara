@@ -1,7 +1,12 @@
-import { ListItem, Stack, Typography } from "@mui/material"
+import { Stack, Typography } from "@mui/material"
 import AboutChild from "./about-child"
-
 const About = (props) => {
+
+
+
+
+
+
     return (<Stack sx={{
         width: "100%",
         paddingX: "10px"
@@ -18,15 +23,9 @@ const About = (props) => {
                 marginBottom: "10px",
                 flexFlow: "row wrap"
             }}>
-                <AboutChild title={"OUR VISION"} type="norms" content={`ONIGEGE ARA- A first class academic body/education provider, adding 
-                value to educational goals of its numerous stakeholders and producing individual
-                 that will be useful to themselves, the nation and the world at large`} />
-                <AboutChild type="norms" title={"OUR MISSION"} content={`ONIGEGE ARA- An academic institution making qualitative education, affordable
-                ,providing and maintaining sound academics training, encouraging moral excellence among youths, providing sustainable human resources development
-                ,providing ambassadors that will uphold and strengthen the effort of our past heroes`} />
-                <AboutChild type="norms" title={"What we stand for"} content={`
-                ONIGEGE ARA -An academic institution, approved by the government and appraised by the people to prepare learners to
-                acquire basic training leading to the award of public certificate-FIS, BECE, WASSCE, NECO, JAMB, GCE etc`} />
+                <AboutChild title={"OUR VISION"} type="norms" content={``} />
+                <AboutChild type="norms" title={"OUR MISSION"} content={``} />
+                <AboutChild type="norms" title={"What we stand for"} content={``} />
                 <AboutChild increase_box={true} type={"list"} title={"What We Do"} content={<>
                     <Typography sx={{
                         width: "100%",
@@ -87,4 +86,7 @@ const About = (props) => {
         </Stack>
     </Stack >)
 }
+
+
+
 export default About

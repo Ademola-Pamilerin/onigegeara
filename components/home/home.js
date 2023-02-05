@@ -10,7 +10,7 @@ const HomeModule = (props) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setPlay(true)
-        }, [3000])
+        }, 4000)
         return () => clearTimeout(timeout)
     })
 
@@ -87,7 +87,7 @@ const HomeModule = (props) => {
                         src={require("../../static/02.jpeg")}
                         alt="Logo 2"
                         objectPosition="50% 10%"
-                        priority
+
                     /></Stack>
                 <Stack sx={{
                     position: "relative",
@@ -99,7 +99,7 @@ const HomeModule = (props) => {
                         src={require("../../static/03.jpeg")}
                         alt="Logo 2"
                         objectPosition="50% 5%"
-                        priority
+
                     /></Stack>
                 <Stack sx={{
                     position: "relative",
@@ -110,7 +110,7 @@ const HomeModule = (props) => {
                         layout='fill'
                         src={require("../../static/04.jpeg")}
                         alt="Logo 2"
-                        priority
+
                         objectPosition="50% 20%"
                     />
                 </Stack>

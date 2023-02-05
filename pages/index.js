@@ -8,10 +8,7 @@ import { useDispatch } from 'react-redux'
 import { getHomePagePost } from '../store/post-slice'
 import Image from 'next/image';
 import BackgroundImage from '../static/ogac-1.png'
-import About from "../components/about/about"
-import Team from "../components/team/team"
-import Footer from "../components/footer/footer"
-import Events from '../components/event/event'
+import dynamic from 'next/dynamic'
 
 
 const Home = (props) => {
@@ -22,6 +19,18 @@ const Home = (props) => {
 
   useEffect(() => {
     localStorage.clear()
+  })
+  const DynamicAbout = dynamic(() => import("../components/about/about"), {
+    loading: () => <CircularProgress variant='indeterminate' />
+  })
+  const DynamicEvent = dynamic(() => import("../components/event/event"), {
+    loading: () => <CircularProgress variant='indeterminate' />
+  })
+  const DynamicFooter = dynamic(() => import("../components/footer/footer"), {
+    loading: () => <CircularProgress variant='indeterminate' />
+  })
+  const DynamicTeam = dynamic(() => import("../components/team/team"), {
+    loading: () => <CircularProgress variant='indeterminate' />
   })
 
   return (
@@ -79,20 +88,20 @@ const Home = (props) => {
             fontWeight: 900,
             marginY: "10px"
           }}> About OGAC</Typography>
-          <About />
+          <DynamicAbout />
         </Stack>
       </Stack>
       <Stack sx={{ width: "100%", marginBottom: "1rem" }} >
-        <Events />
+        <DynamicEvent />
       </Stack >
       <Stack sx={{ width: "100%" }}>
-        <Team />
+        <DynamicTeam />
       </Stack>
       <Stack id="contact" sx={{
         height: "auto"
       }}>
         <a name="about"></a>
-        <Footer />
+        <DynamicFooter />
       </Stack>
     </Stack>
     // <About />

@@ -7,8 +7,11 @@ import { ExpandMore } from "@mui/icons-material";
 import { useState } from "react";
 import ImagePath from '../static/03.jpeg';
 import Word from "../components/UI/words"
+import fs from "fs/promises"
+import path from 'path'
 
-const AboutPage = () => {
+
+const AboutPage = ({ word, error: err }) => {
     const [expanded, setExpanded] = useState(false)
     const handleChange = (value, index) => {
         setExpanded(value ? index : false)
@@ -19,7 +22,7 @@ const AboutPage = () => {
             content={"Read more about OGAC here, know about our History and Learn more about the school"}
         />
         <Stack sx={{
-            margin:"0px 0px 3rem 0px"
+            margin: "0px 0px 3rem 0px"
         }}>
             <MainNav />
         </Stack >
@@ -69,7 +72,13 @@ const AboutPage = () => {
                     lg: "1.5rem"
                 },
             }}>
-                <Word />
+                {word ? <Word word={word} /> : err ? <Stack>
+                    An Error Occured Please Try Again
+                </Stack> : <Stack sx={{
+                    height: "6rem",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}><CircularProgress variant={"indeterminate"} /></Stack>}
             </Typography>
 
 
@@ -204,5 +213,31 @@ const AboutPage = () => {
         </Stack>
     </Stack>
 }
+
+export const getServerSideProps = async () => {
+    try {
+        const promise = fs.readFile(path.join(process.cwd(), "data", "biography.json"))
+        const data = await promise;
+        const result = JSON.parse(data)
+        return {
+            props: {
+                word: result.message,
+                error: null
+            }
+        }
+
+    } catch (error) {
+        return {
+            props: {
+                error: error.message,
+                word: "null"
+            }
+        }
+    }
+
+
+}
+
+
 
 export default AboutPage
