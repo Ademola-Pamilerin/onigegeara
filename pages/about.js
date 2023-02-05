@@ -47,7 +47,7 @@ const AboutPage = ({ word, error: err }) => {
                     lg: "30rem"
                 }
             }}>
-                <Image layout="fill" src={ImagePath} alt={"ONIGEGE ARA OFFICIAL SCHOOL IMAGE"} />
+                <Image layout="fill" src={ImagePath} alt={"ONIGEGE ARA OFFICIAL SCHOOL IMAGE"} priority />
             </Box>
         </Stack>
         <Stack sx={{
