@@ -1,7 +1,3 @@
-import { useRouter } from "next/router"
-import { useEffect, useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { checkStatus } from "../../../../store/auth-slice"
 import HeadComponent from "../../../../components/header/head"
 import MainNav from "../../../../components/navigation/main-nav"
 import { Box, Button, Stack, TextField, Typography, Paper } from "@mui/material"
@@ -18,9 +14,12 @@ const Edit_Us = () => {
 
     const [showSucc, setShowSucc] = useState(false)
     const [TotalSuccess, setTotalSuccess] = useState("")
+    const [loading, setLoading] = useState(false)
+
 
 
     const aboutSubmitHandler = async () => {
+        setLoading(true)
         const aboutMess = aboutRef.current.value
         if (aboutMess.length < 1) {
             setShowErr(true)
@@ -36,10 +35,12 @@ const Edit_Us = () => {
         })
         if (!response.ok) {
             const error = await response.json()
+            setLoading(false)
             setShowErr(true)
             setTotalError(error.message)
         }
         const values = await response.json()
+        setLoading(false)
         aboutRef.current.value = ""
         setTotalSuccess(values.message)
         setShowSucc(true)
@@ -48,6 +49,7 @@ const Edit_Us = () => {
 
     const missionSubmitHandler = async () => {
         const missionMess = missionRef.current.value
+        setLoading(true)
         if (missionMess.length < 1) {
             setShowErr(true)
             setTotalError("Mission Field is required")
@@ -62,16 +64,19 @@ const Edit_Us = () => {
         })
         if (!response.ok) {
             const error = await response.json()
+            setLoading(false)
             setShowErr(true)
             setTotalError(error.message)
         }
         const values = await response.json()
         missionRef.current.value = ""
+        setLoading(false)
         setTotalSuccess(values.message)
         setShowSucc(true)
     }
     const whoSubmitHandler = async () => {
         const missionMess = whoRef.current.value
+        setLoading(true)
         if (missionMess.length < 1) {
             setShowErr(true)
             setTotalError("who we are field is required")
@@ -86,15 +91,18 @@ const Edit_Us = () => {
         })
         if (!response.ok) {
             const error = await response.json()
+            setLoading(false)
             setShowErr(true)
             setTotalError(error.message)
         }
         const values = await response.json()
         whoRef.current.value = ""
+        setLoading(false)
         setTotalSuccess(values.message)
         setShowSucc(true)
     }
     const whatSubmitHandler = async () => {
+        setLoading(true)
         const missionMess = whatRef.current.value
         if (missionMess.length < 1) {
             setShowErr(true)
@@ -109,12 +117,14 @@ const Edit_Us = () => {
             body: JSON.stringify({ message: missionMess.trim() })
         })
         if (!response.ok) {
+            setLoading(false)
             const error = await response.json()
             setShowErr(true)
             setTotalError(error.message)
         }
         const values = await response.json()
         whatRef.current.value = ""
+        setLoading(false)
         setTotalSuccess(values.message)
         setShowSucc(true)
     }
@@ -128,6 +138,13 @@ const Edit_Us = () => {
                 type={"error"}
             />
             <SnackBarComponent
+                open={loading}
+                message={TotalError}
+                close={() => setLoading(false)}
+                duration={10000}
+                type={"warning"}
+            />
+            <SnackBarComponent
                 open={showSucc}
                 message={TotalSuccess}
                 close={() => setShowSucc(false)}
@@ -139,7 +156,7 @@ const Edit_Us = () => {
                 margin: "0px 0px 3rem 0px",
                 width: "100%"
             }}>
-                <MainNav type="Admin" />
+                <MainNav />
             </Stack>
             <Stack sx={{
                 width: "100%",
@@ -208,7 +225,7 @@ const Edit_Us = () => {
                                 justifyContent: "center",
                                 display: "flex"
                             }}>
-                                <Button onClick={aboutSubmitHandler} variant="contained" sx={{
+                                <Button disabled={loading} onClick={aboutSubmitHandler} variant="contained" sx={{
                                     fontSize: "2rem"
                                 }}>Submit</Button>
                             </Box>
@@ -262,7 +279,7 @@ const Edit_Us = () => {
                                 justifyContent: "center",
                                 display: "flex"
                             }}>
-                                <Button onClick={missionSubmitHandler} variant="contained" sx={{
+                                <Button disabled={loading} onClick={missionSubmitHandler} variant="contained" sx={{
                                     fontSize: "2rem"
                                 }}>Submit</Button>
                             </Box>
@@ -316,7 +333,7 @@ const Edit_Us = () => {
                                 justifyContent: "center",
                                 display: "flex"
                             }}>
-                                <Button onClick={whoSubmitHandler} variant="contained" sx={{
+                                <Button disabled={loading} onClick={whoSubmitHandler} variant="contained" sx={{
                                     fontSize: "2rem"
                                 }}>Submit</Button>
                             </Box>
@@ -370,7 +387,7 @@ const Edit_Us = () => {
                                 justifyContent: "center",
                                 display: "flex"
                             }}>
-                                <Button onClick={whatSubmitHandler} variant="contained" sx={{
+                                <Button disabled={loading} onClick={whatSubmitHandler} variant="contained" sx={{
                                     fontSize: "2rem"
                                 }}>Submit</Button>
                             </Box>

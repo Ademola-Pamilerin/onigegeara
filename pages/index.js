@@ -8,10 +8,12 @@ import { useDispatch } from 'react-redux'
 import { getHomePagePost } from '../store/post-slice'
 import Image from 'next/image';
 import BackgroundImage from '../static/ogac-1.png'
+import fs from 'fs/promises'
+import path from 'path'
 import dynamic from 'next/dynamic'
 
 
-const Home = (props) => {
+const Home = ({ data }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getHomePagePost())
@@ -32,6 +34,8 @@ const Home = (props) => {
   const DynamicTeam = dynamic(() => import("../components/team/team"), {
     loading: () => <CircularProgress variant='indeterminate' />
   })
+
+
 
   return (
     <Stack id='top'>
@@ -88,7 +92,7 @@ const Home = (props) => {
             fontWeight: 900,
             marginY: "10px"
           }}> About OGAC</Typography>
-          <DynamicAbout />
+          <DynamicAbout data={data} />
         </Stack>
       </Stack>
       <Stack sx={{ width: "100%", marginBottom: "1rem" }} >
@@ -107,5 +111,28 @@ const Home = (props) => {
     // <About />
   )
 }
+
+export const getServerSideProps = async () => {
+  try {
+    const promise = fs.readFile(path.join(process.cwd(), "data", "about.json"))
+    const result = await promise
+    const data = JSON.parse(result)
+    return {
+      props: {
+        data: { ...data },
+        error: null
+      }
+    }
+  } catch (error) {
+    return {
+      props: {
+        data: null,
+        error: error.message
+      }
+    }
+  }
+}
+
+
 
 export default Home

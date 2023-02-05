@@ -1,7 +1,4 @@
-import { useRouter } from "next/router"
-import { useEffect, useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { checkStatus } from "../../../../store/auth-slice"
+import { useRef, useState } from "react"
 import HeadComponent from "../../../../components/header/head"
 import MainNav from "../../../../components/navigation/main-nav"
 import { Box, Button, Stack, TextField, Typography, Paper } from "@mui/material"
@@ -18,9 +15,13 @@ const EditAbout = () => {
     const [showSucc, setShowSucc] = useState(false)
     const [TotalSuccess, setTotalSuccess] = useState("")
 
+    const [loading, setLoading] = useState(false)
+
     const aboutSubmitHandler = async () => {
+        setLoading(true)
         const aboutMess = aboutRef.current.value
         if (aboutMess.length < 1) {
+            setLoading(false)
             setShowErr(true)
             setTotalError("Vision field is required")
             return
@@ -33,11 +34,14 @@ const EditAbout = () => {
             body: JSON.stringify({ message: aboutMess.trim() })
         })
         if (!response.ok) {
+            aetLoading(false)
             const error = await response.json()
             setShowErr(true)
             setTotalError(error.message)
+
         }
         const values = await response.json()
+        setLoading(false)
         aboutRef.current.value = ""
         setTotalSuccess(values.message)
         setShowSucc(true)
@@ -52,6 +56,13 @@ const EditAbout = () => {
             type={"error"}
         />
         <SnackBarComponent
+            open={loading}
+            message={"Loading"}
+            close={() => setLoading(false)}
+            duration={10000}
+            type={"warning"}
+        />
+        <SnackBarComponent
             open={showSucc}
             message={TotalSuccess}
             close={() => setShowSucc(false)}
@@ -63,7 +74,7 @@ const EditAbout = () => {
             margin: "0px 0px 3rem 0px",
             width: "100%"
         }}>
-            <MainNav type="Admin" />
+            <MainNav />
         </Stack>
         <Stack sx={{
             alignItems: "center",
@@ -131,7 +142,7 @@ const EditAbout = () => {
                             justifyContent: "center",
                             display: "flex"
                         }}>
-                            <Button onClick={aboutSubmitHandler} variant="contained" sx={{
+                            <Button disabled={loading} onClick={aboutSubmitHandler} variant="contained" sx={{
                                 fontSize: "2rem"
                             }}>Submit</Button>
                         </Box>
