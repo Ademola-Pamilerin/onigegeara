@@ -23,16 +23,32 @@ const Home = ({ data }) => {
     localStorage.clear()
   })
   const DynamicAbout = dynamic(() => import("../components/about/about"), {
-    loading: () => <CircularProgress variant='indeterminate' />
+    loading: () => <Stack sx={{
+      height: "50vh",
+      justifyContent: "center",
+      alignItems: "center"
+    }}><CircularProgress variant='indeterminate' /></Stack>
   })
   const DynamicEvent = dynamic(() => import("../components/event/event"), {
-    loading: () => <CircularProgress variant='indeterminate' />
+    loading: () => <Stack sx={{
+      height: "50vh",
+      justifyContent: "center",
+      alignItems: "center"
+    }}><CircularProgress variant='indeterminate' /></Stack>
   })
   const DynamicFooter = dynamic(() => import("../components/footer/footer"), {
-    loading: () => <CircularProgress variant='indeterminate' />
+    loading: () => <Stack sx={{
+      height: "50vh",
+      justifyContent: "center",
+      alignItems: "center"
+    }}><CircularProgress variant='indeterminate' /></Stack>
   })
   const DynamicTeam = dynamic(() => import("../components/team/team"), {
-    loading: () => <CircularProgress variant='indeterminate' />
+    loading: () => <Stack sx={{
+      height: "50vh",
+      justifyContent: "center",
+      alignItems: "center"
+    }}><CircularProgress variant='indeterminate' /></Stack>
   })
 
 
