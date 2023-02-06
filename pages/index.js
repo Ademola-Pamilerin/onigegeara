@@ -21,13 +21,6 @@ const Home = ({ data }) => {
   useEffect(() => {
     localStorage.clear()
   })
-  const DynamicAbout = dynamic(() => import("../components/about/about"), {
-    loading: () => <Stack sx={{
-      height: "50vh",
-      justifyContent: "center",
-      alignItems: "center"
-    }}><CircularProgress variant='indeterminate' /></Stack>
-  })
   const DynamicEvent = dynamic(() => import("../components/event/event"), {
     loading: () => <Stack sx={{
       height: "50vh",

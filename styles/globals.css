@@ -77,6 +77,16 @@ html {
   font-weight: 300;
 }
 
+.show {
+  transform: translateY(0px)
+}
+
+.hide {
+  transform: translateY(-20000px);
+  position: static
+}
+
+
 .text_area {
   width: 90%;
   font-family: none;

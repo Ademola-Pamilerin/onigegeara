@@ -57,6 +57,7 @@ const Navigation = (props) => {
                                     layout='fill'
                                     className={classes.image}
                                     objectFit="cover"
+                                    priority
                                 />
                             </Box>
                         </Stack>
@@ -177,6 +178,7 @@ const Navigation = (props) => {
                                     style={{
                                         mixBlendMode: "multiply"
                                     }}
+                                    priority
                                 />
                             </Stack>
                             <Typography sx={{

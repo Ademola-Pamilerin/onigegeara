@@ -15,6 +15,7 @@ const About = () => {
             const whoVal = res.who
             setNewWho(whoVal.split("?"))
             setData(res)
+            setLoading(false)
         }).catch(error => {
             setLoading(false)
             setError(error.message)
@@ -50,7 +51,7 @@ const About = () => {
                         justifyContent: "center",
                         alignItems: "center"
                     }}>
-                        <CircularProgress variant={"indeterminate"} />
+                        <CircularProgress aria variant={"indeterminate"} />
                     </Stack>
                     : <Stack sx={{
                         width: "100%",

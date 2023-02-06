@@ -48,6 +48,7 @@ const MainNav = (props) => {
                 width: "100%",
                 overflow: "hidden"
             }}>
+                {console.log("Ademola")}
                 <AppBar
                     position={"fixed"}
                     sx={{
@@ -114,6 +115,7 @@ const MainNav = (props) => {
                                     style={{
                                         mixBlendMode: "multiply"
                                     }}
+                                    priority
                                 />
                             </Stack>
                             <Typography sx={{
@@ -208,6 +210,7 @@ const MainNav = (props) => {
                                     style={{
                                         mixBlendMode: "multiply"
                                     }}
+                                    priority
                                 />
                             </Stack>
                             <Typography sx={{
